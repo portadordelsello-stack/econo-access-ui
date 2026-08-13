@@ -131,6 +131,105 @@ router.get('/servicios-mes-hechos', (req, res) => {
     res.json(data);
 });
 
+router.get('/franja-prod', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const data = db.prepare(`
+        SELECT SUM(s.presupuesto) as SumaDePresupuesto
+        FROM servicio s
+        JOIN clientes c ON s.id_cliente = c.id_cliente
+        WHERE strftime('%Y-%m', parse_access_date(s.cita_entrega)) = ?
+          AND s.entregado = 1
+          AND s.acepta = 1
+        GROUP BY s.cita_entrega
+        ORDER BY parse_access_date(s.cita_entrega) ASC
+    `).all(yearMonth);
+    res.json(data);
+});
+
+router.get('/queonda/total', (req, res) => {
+    const row = db.prepare(`SELECT COUNT(*) as total FROM servicio`).get();
+    res.json(row);
+});
+
+router.get('/queonda/record', (req, res) => {
+    const offset = parseInt(req.query.offset) || 0;
+    const row = db.prepare(`
+        SELECT s.*, c.calle, c.numero_direccion, c.depto, c.piso, c.nombre_apellido
+        FROM servicio s
+        LEFT JOIN clientes c ON s.id_cliente = c.id_cliente
+        ORDER BY s.id_servicio ASC
+        LIMIT 1 OFFSET ?
+    `).get(offset);
+    if (!row) return res.status(404).json({ error: 'No record at offset' });
+    res.json(row);
+});
+
+router.get('/queonda/buscar', (req, res) => {
+    const q = req.query.q ? req.query.q.trim().toLowerCase() : '';
+    const match = req.query.match || 'any';
+    const currentOffset = parseInt(req.query.offset) || 0;
+    
+    const targetId = parseInt(q);
+    if (!isNaN(targetId) && /^\d+$/.test(q)) {
+        const rows = db.prepare(`SELECT id_servicio FROM servicio ORDER BY id_servicio ASC`).all();
+        const foundIdx = rows.findIndex(r => r.id_servicio === targetId);
+        if (foundIdx !== -1) {
+            const record = db.prepare(`
+                SELECT s.*, c.calle, c.numero_direccion, c.depto, c.piso, c.nombre_apellido
+                FROM servicio s
+                LEFT JOIN clientes c ON s.id_cliente = c.id_cliente
+                WHERE s.id_servicio = ?
+            `).get(targetId);
+            return res.json({ offset: foundIdx, record });
+        }
+    }
+
+    const rows = db.prepare(`SELECT id_servicio FROM servicio ORDER BY id_servicio ASC`).all();
+    let foundOffset = -1;
+    for (let i = 1; i <= rows.length; i++) {
+        const idx = (currentOffset + i) % rows.length;
+        const row = db.prepare(`
+            SELECT s.*, c.calle, c.numero_direccion
+            FROM servicio s
+            LEFT JOIN clientes c ON s.id_cliente = c.id_cliente
+            WHERE s.id_servicio = ?
+        `).get(rows[idx].id_servicio);
+        if (!row) continue;
+        
+        const fields = ['id_servicio', 'fecha', 'aparato', 'marca_modelo', 'desperfecto_usuario', 'servicios_convenidos', 'calle', 'numero_direccion'];
+        let matches = false;
+        for (const f of fields) {
+            const val = row[f];
+            if (val === null || val === undefined) continue;
+            const valStr = String(val).toLowerCase();
+            if (match === 'any' && valStr.includes(q)) matches = true;
+            else if (match === 'whole' && valStr === q) matches = true;
+            else if (match === 'start' && valStr.startsWith(q)) matches = true;
+            
+            if (matches) break;
+        }
+        
+        if (matches) {
+            foundOffset = idx;
+            break;
+        }
+    }
+    
+    if (foundOffset !== -1) {
+        const record = db.prepare(`
+            SELECT s.*, c.calle, c.numero_direccion, c.depto, c.piso, c.nombre_apellido
+            FROM servicio s
+            LEFT JOIN clientes c ON s.id_cliente = c.id_cliente
+            ORDER BY s.id_servicio ASC
+            LIMIT 1 OFFSET ?
+        `).get(foundOffset);
+        res.json({ offset: foundOffset, record });
+    } else {
+        res.status(404).json({ error: 'No matches found' });
+    }
+});
+
 // Generic GET /api/servicios
 router.get('/', (req, res) => {
     const page = parseInt(req.query.page) || 1;

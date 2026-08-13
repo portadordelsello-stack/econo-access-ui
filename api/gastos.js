@@ -57,6 +57,100 @@ router.get('/gastos-mes', (req, res) => {
     res.json(data);
 });
 
+router.get('/vianda-total', (req, res) => {
+    // Mirrors Access query chain:
+    //   "gastos mes" = GASTOS where fecha is in current month
+    //   "gastos mes vianda" = above WHERE rubro = 'viandas'
+    //   "gasto mes vianda total" = SUM of above .gasto (parcial in sqlite)
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'viandas'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/repuestos-total', (req, res) => {
+    // Mirrors Access query chain:
+    //   "gastos mes" = GASTOS where fecha is in current month
+    //   "gastos mes repuestos" = above WHERE rubro = 'repuestos'
+    //   "gastos mes repuestos total" = SUM of above .gasto (parcial in sqlite)
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'repuestos'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/alimentos-total', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'alimentos'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/salarios-total', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'salarios'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/infraestructura-total', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'infraestructura'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/rotiseria-total', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'rotisería'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+router.get('/insumos-eco-total', (req, res) => {
+    const d = new Date();
+    const yearMonth = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(parcial), 0) as SumaDegasto
+        FROM ${TABLE}
+        WHERE LOWER(rubro) = 'insumos eco'
+          AND strftime('%Y-%m', parse_access_date(fecha)) = ?
+    `).get(yearMonth);
+    res.json(row);
+});
+
+
+
 router.get('/meta/options', (req, res) => {
     const proveedors = db.prepare(`SELECT DISTINCT proveedor FROM ${TABLE} WHERE proveedor IS NOT NULL AND proveedor != '' ORDER BY proveedor ASC`).all().map(r => r.proveedor);
     const rubros = db.prepare(`SELECT DISTINCT rubro FROM ${TABLE} WHERE rubro IS NOT NULL AND rubro != '' ORDER BY rubro ASC`).all().map(r => r.rubro);

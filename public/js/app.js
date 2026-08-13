@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['queonda', 'historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod'];
   return !datasheets.includes(pageName);
 }
 
@@ -463,6 +463,15 @@ function getTabTitle(hash) {
   if (pageName === 'servicios-mes-hechos') return 'servicios de este mes hechos';
   if (pageName === 'stock') return 'STOCK';
   if (pageName === 'comprar-hoy') return 'Comprar Hoy';
+  if (pageName === 'vianda') return 'gasto mes vianda total';
+  if (pageName === 'repue') return 'gasto mes repuestos total';
+  if (pageName === 'alim') return 'gasto mes alimento total';
+  if (pageName === 'salar') return 'gasto mes salario bis total';
+  if (pageName === 'infra') return 'gasto mes infraestructura total';
+  if (pageName === 'roti') return 'gasto mes rotiseria total';
+  if (pageName === 'insum') return 'gasto mes insumos eco total';
+  if (pageName === 'franja-prod') return 'Total$octubre2020';
+  if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
 }

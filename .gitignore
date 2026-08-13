@@ -5,3 +5,6 @@ node_modules/
 .agents/
 *.accdb
 *.png
+*.db-shm
+*.db-wal
+*.db-journal

@@ -1,19 +1,298 @@
-<div class="access-form">
-  <div class="form-header">QueOnda - Vista General</div>
-  <div class="title-bar">
-    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
-  </div>
-  <div class="form-body">
-    <div class="tabs">
-      <div class="tab active" onclick="qo_tab('taller', this)">Taller</div>
-      <div class="tab" onclick="qo_tab('traer', this)">Traer</div>
-      <div class="tab" onclick="qo_tab('llevar', this)">Llevar</div>
-      <div class="tab" onclick="qo_tab('terminado', this)">Terminado</div>
-      <div class="tab" onclick="qo_tab('comprar', this)">Comprar</div>
-      <div class="tab" onclick="qo_tab('stock', this)">Stock</div>
+<div class="queonda-form">
+  <!-- Left Panel: Número de Servicio + Dirección -->
+  <div class="queonda-left-panel">
+    <div class="queonda-field-group">
+      <label class="queonda-label">Numero Servicio</label>
+      <div class="queonda-id-display">
+        <input type="text" id="qo-id-servicio" class="queonda-id-input" readonly>
+        <div class="queonda-id-badge" id="qo-id-badge"></div>
+      </div>
     </div>
-    <div class="form-group-box" data-legend="Datos">
-      <div id="qo-grid" style="height: 350px; overflow: auto;"></div>
+
+    <div class="queonda-address-fields">
+      <div class="queonda-field">
+        <input type="text" id="qo-calle" class="queonda-text-input" placeholder="Calle">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-numero-dir" class="queonda-text-input" placeholder="Número">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-depto" class="queonda-text-input" placeholder="">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-piso" class="queonda-text-input" placeholder="">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-aparato" class="queonda-text-input" placeholder="Aparato">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-tecnico" class="queonda-text-input" placeholder="Técnico">
+      </div>
+      <div class="queonda-field">
+        <input type="text" id="qo-marca-modelo" class="queonda-text-input" placeholder="Marca Modelo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Center Panel: Checkboxes + Fechas -->
+  <div class="queonda-center-panel">
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-ingreso-taller"> Está en taller
+      </label>
+      <span class="queonda-since-label">desde el:</span>
+      <input type="text" id="qo-fecha-taller" class="queonda-date-input" readonly>
+    </div>
+
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-espera"> Está en espera
+      </label>
+      <span style="display:inline-block; width: 80px;"></span>
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-rechaza"> Está Rechazado
+      </label>
+    </div>
+
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-acepta"> Está aceptado
+      </label>
+      <span style="display:inline-block; width: 80px;"></span>
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-jo"> Joel
+      </label>
+    </div>
+
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-terminado"> Está Terminado
+      </label>
+    </div>
+
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-pasa-stock"> Pasó a Stock
+      </label>
+    </div>
+
+    <div class="queonda-delivery-row">
+      <span class="queonda-since-label">entregar el día:</span>
+      <input type="text" id="qo-cita-entrega" class="queonda-date-input" readonly>
+    </div>
+
+    <div class="queonda-check-row">
+      <label class="queonda-check-label">
+        <input type="checkbox" id="qo-entregado"> Entregado
+      </label>
+    </div>
+  </div>
+
+  <!-- Right Panel: Text Areas -->
+  <div class="queonda-right-panel">
+    <div class="queonda-comment-block">
+      <label class="queonda-comment-label">el cliente dijo...</label>
+      <textarea id="qo-desperfecto-usuario" class="queonda-textarea" rows="4"></textarea>
+    </div>
+    <div class="queonda-comment-block">
+      <label class="queonda-comment-label">los técnicos dicen...</label>
+      <textarea id="qo-resena-interna" class="queonda-textarea" rows="4"></textarea>
+    </div>
+    <div class="queonda-comment-block">
+      <label class="queonda-comment-label">y al cliente le dijimos...</label>
+      <textarea id="qo-servicios-convenidos" class="queonda-textarea" rows="4"></textarea>
+    </div>
+  </div>
+
+  <!-- Bottom Nav Bar -->
+  <div class="queonda-nav-bar" id="qo-nav-bar">
+    <div class="queonda-nav-left">
+      <span>Registro:</span>
+      <button class="queonda-nav-btn" id="qo-btn-first" title="Primero">|&lt;</button>
+      <button class="queonda-nav-btn" id="qo-btn-prev" title="Anterior">&lt;</button>
+      <input type="text" id="qo-nav-input" class="queonda-nav-input" value="1">
+      <span id="qo-nav-total">de ...</span>
+      <button class="queonda-nav-btn" id="qo-btn-next" title="Siguiente">&gt;</button>
+      <button class="queonda-nav-btn" id="qo-btn-last" title="Último">&gt;|</button>
+      <button class="queonda-nav-btn" id="qo-btn-new" title="Nuevo">*</button>
+    </div>
+    <div class="queonda-nav-right">
+      <span>Sin filtro</span>
+      <span id="qo-nav-search-btn" class="queonda-buscar-btn">Buscar</span>
     </div>
   </div>
 </div>
+
+<style>
+.queonda-form {
+  display: grid;
+  grid-template-columns: 220px 320px 1fr;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  background: #1a2a4a;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 13px;
+  gap: 0;
+  position: relative;
+}
+
+/* Left Panel */
+.queonda-left-panel {
+  padding: 14px 10px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid #2e4070;
+}
+
+.queonda-field-group { display: flex; flex-direction: column; gap: 4px; }
+.queonda-label { font-size: 11px; color: #8ab0d8; text-align: center; }
+
+.queonda-id-display {
+  display: flex;
+  align-items: center;
+  background: #12223c;
+  border: 1px solid #3060a0;
+}
+.queonda-id-input {
+  background: #12223c;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  padding: 4px 6px;
+  width: 100%;
+  outline: none;
+}
+.queonda-id-badge {
+  background: #0070c0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 2px 10px;
+  min-width: 36px;
+  text-align: center;
+  border-left: 1px solid #3060a0;
+}
+
+.queonda-address-fields { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+
+.queonda-text-input {
+  width: 100%;
+  background: #fff;
+  color: #000;
+  border: 1px solid #8ab0d8;
+  padding: 3px 6px;
+  font-size: 13px;
+  box-sizing: border-box;
+  outline: none;
+}
+.queonda-text-input:focus { border-color: #0070c0; }
+.queonda-text-input[readonly] { background: #e8edf4; }
+
+/* Center Panel */
+.queonda-center-panel {
+  padding: 14px 14px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-right: 1px solid #2e4070;
+}
+
+.queonda-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.queonda-check-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #d0dff0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.queonda-check-label input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+.queonda-since-label { color: #8ab0d8; font-size: 12px; white-space: nowrap; }
+.queonda-date-input {
+  background: #d0e8ff;
+  border: 1px solid #3060a0;
+  color: #000;
+  padding: 3px 6px;
+  font-size: 13px;
+  width: 90px;
+  outline: none;
+}
+.queonda-delivery-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* Right Panel */
+.queonda-right-panel {
+  padding: 14px 14px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.queonda-comment-block { display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.queonda-comment-label { font-size: 11px; color: #8ab0d8; text-align: right; }
+.queonda-textarea {
+  background: #fff;
+  color: #000;
+  border: 1px solid #8ab0d8;
+  padding: 4px 6px;
+  font-size: 13px;
+  resize: none;
+  flex: 1;
+  font-family: inherit;
+  outline: none;
+  min-height: 60px;
+}
+.queonda-textarea:focus { border-color: #0070c0; }
+
+/* Nav Bar */
+.queonda-nav-bar {
+  grid-column: 1 / -1;
+  background: #f0f0f0;
+  border-top: 2px solid #7b9fc7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 10px;
+  color: #000;
+  font-size: 12px;
+}
+.queonda-nav-left { display: flex; align-items: center; gap: 4px; }
+.queonda-nav-btn {
+  background: #e0e0e0;
+  border: 1px solid #aaa;
+  padding: 2px 7px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.queonda-nav-btn:hover { background: #c8d8f0; }
+.queonda-nav-input {
+  width: 38px;
+  text-align: center;
+  border: 1px solid #aaa;
+  font-size: 12px;
+  padding: 1px 3px;
+}
+.queonda-nav-right { display: flex; align-items: center; gap: 10px; color: #555; }
+.queonda-buscar-btn {
+  background: #e0e0e0;
+  border: 1px solid #aaa;
+  padding: 2px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.queonda-buscar-btn:hover { background: #c8d8f0; }
+</style>
