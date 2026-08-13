@@ -1,0 +1,243 @@
+<div class="access-pedidos-form" style="display: flex; flex-direction: column; height: 100%; width: 100%; box-sizing: border-box; background-color: #B4B4B4; color: #000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px;">
+  
+  <!-- Client Section (Master) -->
+  <div class="client-master-section" style="padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; border-bottom: 2px solid #888;">
+    
+    <!-- Cliente problematico -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <input type="checkbox" id="cli-problematico" style="transform: scale(1.2); cursor: pointer;">
+      <label for="cli-problematico" style="font-weight: bold; cursor: pointer;">Cliente problematico</label>
+    </div>
+
+    <!-- Id cliente & navigation -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-weight: bold;">Id cliente:</span>
+      <input type="text" id="cli-id" readonly style="width: 60px; height: 22px; text-align: center; font-weight: bold; border: 1px solid #777; background-color: #fff; color: #000;">
+      
+      <!-- Client Navigation Controls -->
+      <div style="display: flex; align-items: center; gap: 6px; margin-left: 15px;">
+        <button id="cli-btn-prev" title="Cliente anterior" style="padding: 1px 6px; font-weight: bold; cursor: pointer;">◀</button>
+        <button id="cli-btn-next" title="Siguiente cliente" style="padding: 1px 6px; font-weight: bold; cursor: pointer;">▶</button>
+        <button id="cli-btn-last" title="Último cliente" style="padding: 1px 6px; font-weight: bold; cursor: pointer;">▶|</button>
+        <button id="cli-btn-new" title="Nuevo cliente" style="padding: 1px 6px; font-weight: bold; cursor: pointer;">📄✨</button>
+      </div>
+    </div>
+
+    <!-- Address info -->
+    <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="font-size: 22px; font-weight: normal; font-family: Georgia, serif;">Calle:</span>
+        <input type="text" id="cli-calle" style="width: 250px; height: 24px; font-size: 16px; border: 1px solid #777; padding-left: 4px;">
+      </div>
+      
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="font-size: 22px; font-weight: normal; font-family: Georgia, serif;">Nro:</span>
+        <input type="text" id="cli-nro" style="width: 200px; height: 24px; font-size: 16px; border: 1px solid #777; padding-left: 4px;">
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="font-size: 22px; font-weight: normal; font-family: Georgia, serif;">Depto:</span>
+        <input type="text" id="cli-depto" style="width: 80px; height: 24px; font-size: 16px; border: 1px solid #777; padding-left: 4px;">
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="font-size: 22px; font-weight: normal; font-family: Georgia, serif;">Piso:</span>
+        <input type="text" id="cli-piso" style="width: 80px; height: 24px; font-size: 16px; border: 1px solid #777; padding-left: 4px;">
+      </div>
+
+      <!-- Save client button -->
+      <button id="cli-save-btn" style="padding: 3px 10px; font-weight: bold; background-color: #e1e1e1; border: 1px solid #777; cursor: pointer; margin-left: auto;">
+        Guardar Cliente
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Services Section (Child subform in blue background) -->
+  <div class="services-detail-section" style="flex-grow: 1; background-color: #1F4E79; color: #fff; padding: 15px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px; position: relative; overflow-y: auto;">
+    
+    <!-- Top Row fields -->
+    <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span>Id servicio:</span>
+        <input type="text" id="srv-id" readonly style="width: 50px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span>Id cliente:</span>
+        <input type="text" id="srv-cli-id" readonly style="width: 50px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span style="color: #FF6666; font-weight: bold;">Fecha:</span>
+        <input type="text" id="srv-fecha" style="width: 90px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span style="color: #FF6666; font-weight: bold;">Aparato:</span>
+        <select id="srv-aparato" style="width: 120px; height: 20px; background-color: #fff; color: #000; border: 1px solid #777;">
+          <option value="Lavarropas">Lavarropas</option>
+          <option value="Secarropas Centrifugo">Secarropas Centrifugo</option>
+          <option value="Lavavajillas">Lavavajillas</option>
+          <option value="Ventilador">Ventilador</option>
+        </select>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <span style="color: #FF6666; font-weight: bold;">Marca Modelo:</span>
+        <input type="text" id="srv-marca-modelo" style="width: 180px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; padding-left: 3px;">
+      </div>
+    </div>
+
+    <!-- Layout structure with main inputs & info logistica -->
+    <div style="display: flex; gap: 20px; flex-grow: 1;">
+      
+      <!-- Inputs column -->
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 8px;">
+        
+        <!-- Desperfecto Usuario -->
+        <div style="display: flex; flex-direction: column;">
+          <span>Desperfecto Usuario:</span>
+          <textarea id="srv-desperfecto" style="width: 100%; height: 45px; color: #000; background-color: #fff; border: 1px solid #777; resize: none; box-sizing: border-box; padding: 3px; font-family: inherit; font-size: 12px;"></textarea>
+        </div>
+
+        <!-- Cita dia / Traer ver / Checkboxes -->
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="color: #FF6666; font-weight: bold;">Cita dia:</span>
+            <input type="text" id="srv-cita-dia" style="width: 90px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 2px;">
+            <span>entre las:</span>
+            <input type="text" id="srv-hora-desde" style="width: 50px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 2px;">
+            <span>... y las:</span>
+            <input type="text" id="srv-hora-hasta" style="width: 50px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="color: #FF6666; font-weight: bold;">Traer Ver:</span>
+            <select id="srv-traer-ver" style="width: 100px; height: 20px; background-color: #fff; color: #000; border: 1px solid #777;">
+              <option value="traer">traer</option>
+              <option value="ver">ver</option>
+              <option value="a confirmar">a confirmar</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Checkboxes Row -->
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-ingreso-taller" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-ingreso-taller" style="color: #FF6666; font-weight: bold; cursor: pointer;">Ingreso Taller</label>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-reclamo-garantia" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-reclamo-garantia" style="cursor: pointer;">Reclamo garantia</label>
+          </div>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-arreglado-domicilio" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-arreglado-domicilio" style="cursor: pointer;">Arreglado en domicilio</label>
+          </div>
+        </div>
+
+        <!-- Services Requeridos -->
+        <div style="display: flex; flex-direction: column;">
+          <span>Services Requeridos:</span>
+          <textarea id="srv-requeridos" style="width: 100%; height: 32px; color: #000; background-color: #fff; border: 1px solid #777; resize: none; box-sizing: border-box; padding: 3px; font-family: inherit; font-size: 12px;"></textarea>
+        </div>
+
+        <!-- Servicios Convenidos -->
+        <div style="display: flex; flex-direction: column;">
+          <span style="color: #FF6666; font-weight: bold;">Servicios Convenidos:</span>
+          <textarea id="srv-convenidos" style="width: 100%; height: 32px; color: #000; background-color: #fff; border: 1px solid #777; resize: none; box-sizing: border-box; padding: 3px; font-family: inherit; font-size: 12px;"></textarea>
+        </div>
+
+        <!-- Reseña Interna Servicios -->
+        <div style="display: flex; flex-direction: column;">
+          <span>Reseña Interna Servicios:</span>
+          <textarea id="srv-resena-interna" style="width: 100%; height: 32px; color: #000; background-color: #fff; border: 1px solid #777; resize: none; box-sizing: border-box; padding: 3px; font-family: inherit; font-size: 12px;"></textarea>
+        </div>
+
+        <!-- Presupuesto / Acepta / Garantia / Cita entrega -->
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="color: #FF6666; font-weight: bold;">Presupuesto : $</span>
+            <input type="text" id="srv-presupuesto" style="width: 60px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: right; padding-right: 3px;">
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-acepta-presup" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-acepta-presup" style="color: #FF6666; font-weight: bold; cursor: pointer;">Acepta Presup.</label>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span>Garantía:</span>
+            <select id="srv-garantia" style="width: 130px; height: 20px; background-color: #fff; color: #000; border: 1px solid #777;">
+              <option value="">(ninguna)</option>
+              <option value="3 (tres) meses">3 (tres) meses</option>
+              <option value="6 (seis) meses">6 (seis) meses</option>
+              <option value="12 (doce) meses">12 (doce) meses</option>
+            </select>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span style="color: #FF6666; font-weight: bold;">Cita entrega:</span>
+            <input type="text" id="srv-cita-entrega" style="width: 90px; height: 20px; border: 1px solid #777; background-color: #fff; color: #000; text-align: center;">
+          </div>
+        </div>
+
+        <!-- Stock, Entregado, Factura, Hace meses -->
+        <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 5px;">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-stock" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-stock" style="cursor: pointer;">Pasa a Stock</label>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-entregado" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-entregado" style="color: #FF6666; font-weight: bold; cursor: pointer;">Entregado</label>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="srv-factura" style="transform: scale(1.1); cursor: pointer;">
+            <label for="srv-factura" style="cursor: pointer;">factura</label>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 6px; margin-left: 10px;">
+            <span>hace</span>
+            <input type="text" id="srv-hace-meses" readonly style="width: 40px; height: 20px; text-align: center; border: 1px solid #777; background-color: #fff; color: #000; font-weight: bold;">
+            <span>meses</span>
+          </div>
+
+          <!-- Save service button -->
+          <button id="srv-save-btn" style="padding: 2px 10px; font-weight: bold; background-color: #e1e1e1; border: 1px solid #777; cursor: pointer; color: #000; margin-left: auto;">
+            Guardar Servicio
+          </button>
+        </div>
+
+      </div>
+
+      <!-- info logistica column -->
+      <div style="width: 180px; display: flex; flex-direction: column; gap: 5px;">
+        <span style="font-weight: bold;">info logistica:</span>
+        <textarea id="srv-info-logistica" style="width: 100%; flex-grow: 1; background-color: #fff; color: #000; border: 1px solid #777; resize: none; box-sizing: border-box; padding: 5px; font-family: inherit; font-size: 12px;"></textarea>
+      </div>
+
+    </div>
+
+    <!-- Center Control Buttons (Service navigations) -->
+    <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-bottom: 25px;">
+      <button id="srv-btn-prev" title="Servicio anterior" style="width: 32px; height: 24px; font-weight: bold; color: #000; background-color: #fff; border: 1px solid #777; cursor: pointer;">◀</button>
+      <button id="srv-btn-next" title="Servicio siguiente" style="width: 32px; height: 24px; font-weight: bold; color: #000; background-color: #fff; border: 1px solid #777; cursor: pointer;">▶</button>
+      <button id="srv-btn-new" title="Nuevo servicio para este cliente" style="width: 36px; height: 24px; font-weight: bold; color: #000; background-color: #fff; border: 1px solid #777; cursor: pointer;">📄✨</button>
+    </div>
+
+  </div>
+
+  <!-- Bottom record navigator bar -->
+  <div class="access-datasheet-nav-bar" id="srv-record-nav" style="border-top: 1px solid #999; background-color: #E3E3E3; color: #000; font-family: Tahoma, sans-serif; font-size: 11px; padding: 4px 6px; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; height: 28px; user-select: none;">
+    <!-- Standard Access navbar content will be generated dynamically -->
+  </div>
+
+</div>

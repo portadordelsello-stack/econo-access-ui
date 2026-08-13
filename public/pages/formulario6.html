@@ -1,0 +1,154 @@
+<div class="access-formulario6-form" style="display: flex; flex-direction: column; height: 100%; width: 100%; box-sizing: border-box; background-color: #387682; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; padding: 25px; position: relative;">
+  
+  <!-- Top selector for dynamic queries (unobtrusive at the top-left) -->
+  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px; background-color: rgba(0,0,0,0.2); padding: 5px 12px; border-radius: 4px; width: fit-content;">
+    <span>Mes/Año:</span>
+    <select id="f6-month" style="height: 22px; border: 1px solid #777; background: #fff; color: #000; font-size: 12px;">
+      <option value="2024-02">Febrero 2024 (Por defecto)</option>
+      <option value="2024-01">Enero 2024</option>
+      <option value="2023-12">Diciembre 2023</option>
+      <option value="2023-11">Noviembre 2023</option>
+    </select>
+  </div>
+
+  <!-- Main layout grid -->
+  <div style="display: grid; grid-template-columns: 280px 1fr 340px; gap: 20px; flex-grow: 1;">
+    
+    <!-- Left Column (Collaborators joel, rodri, fer, etc.) -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- joel -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-weight: bold;">joel</span>
+        <input type="text" id="f6-joel" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; font-weight: bold; padding-right: 4px;">
+      </div>
+      <!-- rodri -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-weight: bold;">rodri</span>
+        <input type="text" id="f6-rodri" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; font-weight: bold; padding-right: 4px;">
+      </div>
+      <!-- fer -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-weight: bold;">fer</span>
+        <input type="text" id="f6-fer" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; font-weight: bold; padding-right: 4px;">
+      </div>
+      
+      <!-- spacing -->
+      <div style="height: 15px;"></div>
+
+      <!-- gasto eco -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-weight: bold;">gasto eco</span>
+        <input type="text" id="f6-gasto-eco" style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+      </div>
+      <!-- util -->
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-weight: bold;">util</span>
+        <input type="text" id="f6-util" style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+      </div>
+
+      <!-- spacing -->
+      <div style="height: 15px;"></div>
+
+      <!-- util tiempo real -->
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 320px;">
+        <span style="font-weight: bold; width: 120px;">util tiempo real</span>
+        <input type="text" id="f6-util-real" style="width: 180px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+      </div>
+    </div>
+
+    <!-- Center Column (Financial Summary indicators) -->
+    <div style="display: flex; flex-direction: column; align-items: center; padding-top: 10px; gap: 14px;">
+      
+      <!-- pres mes ant -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <input type="checkbox" id="f6-chk-pres-mes-ant" style="transform: scale(1.3); cursor: pointer;">
+        <span style="width: 100px; font-weight: bold; text-align: right;">pres mes ant</span>
+        <input type="text" id="f6-pres-mes-ant" style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+      </div>
+
+      <!-- producto -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="width: 115px; font-weight: bold; text-align: right;">producto</span>
+        <input type="text" id="f6-producto" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #000; color: #fff; font-weight: bold; padding-right: 4px;">
+      </div>
+
+      <!-- gasto mes -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="width: 115px; font-weight: bold; text-align: right;">gasto mes</span>
+        <input type="text" id="f6-gasto-mes" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+      </div>
+
+      <!-- mano mes (red border box around label and field) -->
+      <div style="border: 2px solid #FF3333; padding: 6px 12px; display: flex; align-items: center; gap: 10px; border-radius: 3px; background-color: rgba(255, 0, 0, 0.1);">
+        <span style="font-weight: bold; text-shadow: 1px 1px 2px #000;">mano mes</span>
+        <input type="text" id="f6-mano-mes" readonly style="width: 140px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #FF3333; font-weight: bold; padding-right: 4px;">
+      </div>
+
+    </div>
+
+    <!-- Right Column (la diaria box, mega, nafta, sal, eco, pmi, action buttons) -->
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+      
+      <!-- la diaria box (red border, yellow title) -->
+      <div style="border: 2px solid #FF3333; padding: 12px; display: flex; flex-direction: column; gap: 8px; border-radius: 4px; background-color: rgba(0,0,0,0.15); width: 220px;">
+        <span style="color: #FFFF00; font-weight: bold; text-align: center; font-size: 14px; margin-bottom: 5px;">la diaria</span>
+        
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span>c arranque</span>
+          <input type="text" id="f6-c-arranque" style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span>recaud.</span>
+          <input type="text" id="f6-recaud" style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span>gasto hoy</span>
+          <input type="text" id="f6-gasto-hoy" style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        
+        <!-- total (white border box) -->
+        <div style="border: 2px solid #fff; padding: 4px; margin-top: 5px; display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">total</span>
+          <input type="text" id="f6-total-diario" readonly style="width: 110px; height: 22px; text-align: right; border: none; background-color: transparent; color: #fff; font-weight: bold; padding-right: 4px; outline: none;">
+        </div>
+      </div>
+
+      <!-- Under la diaria: mega, nafta, sal, eco, pmi -->
+      <div style="display: flex; flex-direction: column; gap: 8px; width: 220px; margin-top: 5px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">mega</span>
+          <input type="text" id="f6-mega" readonly style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">nafta</span>
+          <input type="text" id="f6-nafta" readonly style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">sal</span>
+          <input type="text" id="f6-sal" readonly style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">eco</span>
+          <input type="text" id="f6-eco" readonly style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <span style="font-weight: bold;">pmi</span>
+          <input type="text" id="f6-pmi" readonly style="width: 110px; height: 22px; text-align: right; border: 1px solid #777; background-color: #fff; color: #000; padding-right: 4px;">
+        </div>
+      </div>
+
+      <!-- Action buttons on the right side -->
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 15px; width: 220px;">
+        <button id="f6-btn-ministerio" style="padding: 6px; font-weight: bold; background-color: #fff; color: #000; border: 1px solid #777; cursor: pointer; text-align: center; border-radius: 3px; font-size: 11px; box-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+          franja ministerio mensual
+        </button>
+        <button id="f6-btn-gastos-mes" style="padding: 6px; font-weight: bold; background-color: #fff; color: #000; border: 1px solid #777; cursor: pointer; text-align: center; border-radius: 3px; font-size: 11px; box-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+          franja gasto mes
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

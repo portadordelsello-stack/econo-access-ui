@@ -1,0 +1,39 @@
+<div class="access-form">
+  <div class="form-header">Clientes</div>
+  <div class="title-bar">
+    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
+    <button class="cmd-button" onclick="cli_save()" style="padding: 2px 5px; margin-right: 5px;">Guardar</button>
+    <button class="cmd-button" onclick="cli_new()" style="padding: 2px 5px; margin-right: 5px;">Nuevo</button>
+    <button class="cmd-button" onclick="cli_delete()" style="padding: 2px 5px;">Eliminar</button>
+  </div>
+
+  <div class="form-body">
+    <div class="form-group-box" data-legend="Buscar">
+      <div class="form-row">
+        <input type="text" id="cli-search" class="form-control" placeholder="Buscar por nombre o calle...">
+        <button class="cmd-button" onclick="cli_doSearch()" style="margin-left: 5px; padding: 2px 5px;">Buscar</button>
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group-box" data-legend="Datos Personales">
+        <div class="form-row"><label>Nombre:</label><input type="text" id="cli-nombre" class="form-control"></div>
+        <div class="form-row"><label>DNI:</label><input type="text" id="cli-dni" class="form-control"></div>
+        <div class="form-row"><label>Teléfono 1:</label><input type="text" id="cli-tel1" class="form-control"></div>
+        <div class="form-row"><label>Teléfono 2:</label><input type="text" id="cli-tel2" class="form-control"></div>
+      </div>
+      <div class="form-group-box" data-legend="Dirección">
+        <div class="form-row"><label>Calle:</label><input type="text" id="cli-calle" class="form-control"></div>
+        <div class="form-row"><label>Número:</label><input type="text" id="cli-numero" class="form-control"></div>
+        <div class="form-row"><label>Piso/Depto:</label><input type="text" id="cli-piso" class="form-control"></div>
+        <div class="form-row"><label>Localidad:</label><input type="text" id="cli-localidad" class="form-control"></div>
+      </div>
+    </div>
+
+    <div class="form-group-box" data-legend="Historial de Servicios">
+      <div id="cli-subform" style="height: 200px; overflow-y: auto;"></div>
+    </div>
+  </div>
+  
+  <div id="cli-record-nav"></div>
+</div>

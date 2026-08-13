@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EconoService - Panel Principal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="title-bar">
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><rect width='16' height='16' fill='%23A00'/></svg>" width="16" height="16" style="margin-right:5px">
+    EconoService - Panel Principal
+  </div>
+
+  <div id="access-tabs-bar" class="access-tabs-bar"></div>
+
+  <div id="app">
+    <!-- Router injects content here -->
+  </div>
+
+  <div class="status-bar">
+    <div class="status-ready">Listo</div>
+    <div id="status-time"></div>
+  </div>
+
+  <!-- Main dashboard template (hidden by default, loaded by router) -->
+  <template id="tpl-dashboard">
+    <div class="panel-container">
+      <div class="panel-main-row">
+        
+        <!-- Col 1 -->
+        <div class="panel-col col-1">
+          <a href="#misiones" class="btn-classic font-bold">misiones</a>
+          <a href="#gastos-mes" class="btn-classic spacing-top font-small">franja gasto mes</a>
+          <a href="#gastos" class="btn-classic font-bold color-blue-text">GASTOS</a>
+          <a href="#gastos-mes" class="btn-classic font-small">GASTOS consul</a>
+          <a href="#pedidos" class="btn-classic font-medium color-blue-bg">PEDIDOS</a>
+          <a href="#formulario6" class="btn-classic font-medium">ver</a>
+          <a href="#servicios-mes-hechos" class="btn-classic font-small">serv. mes actual hechos</a>
+          <a href="#repuestos" class="btn-classic color-blue-bg font-small">repuestos mega</a>
+          <a href="#stock" class="btn-classic color-orange-bg font-small font-bold">LAVARR. STOCK</a>
+          <a href="#comprar-hoy" class="btn-classic font-small">compras</a>
+          <a href="#gastos-mes" class="btn-classic font-small">compras sugeridas</a>
+          <a href="#queonda" class="btn-queonda">que onda</a>
+          <a href="#gastos-mes" class="btn-classic font-small">franja gasto mes</a>
+        </div>
+        
+        <!-- Col 2 -->
+        <div class="panel-col col-2">
+          <a href="#gastos" class="btn-classic color-lightblue-bg">vianda</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">repue</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">alim</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">salar</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">infra</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">roti</a>
+          <a href="#gastos" class="btn-classic color-lightblue-bg">insum</a>
+          
+          <div class="btn-classic spacing-top font-small">franja prod</div>
+          <a href="#gastos-mes" class="btn-classic font-small">franja gasto mes</a>
+        </div>
+        
+        <!-- Col 3 -->
+        <div class="panel-col col-3">
+          <div class="btn-classic color-lightblue-bg font-small">cuenta hoy</div>
+          <div class="btn-classic color-lightblue-bg font-small">ctdo total</div>
+          <a href="#ministerio" class="btn-classic color-pink-bg font-small font-bold">fichar</a>
+          <div class="btn-classic font-small color-red-text">control f</div>
+          <div class="btn-classic font-small color-blue-text">franja</div>
+          <a href="#productos-meses" class="btn-classic font-small color-red-text">prod. mes</a>
+          
+          <div class="group-box-recaudacion">
+            <div class="group-box-title">recaudación</div>
+            <a href="#resumen-mensual" class="btn-classic font-medium color-blue-text font-bold">hoy</a>
+            <a href="#resumen-mensual" class="btn-classic font-medium font-bold">mañana</a>
+            <a href="#resumen-mensual" class="btn-classic font-medium font-bold">futura</a>
+            <a href="#resumen-mensual" class="btn-classic font-medium font-bold">ayer</a>
+          </div>
+          
+          <a href="#formulario6" class="btn-classic font-small color-green-text border-green">placas blue amarilla</a>
+        </div>
+        
+        <!-- Col 4 (TALLER) -->
+        <div class="panel-col col-4 border-yellow">
+          <div class="panel-section-title color-blue-bg">TALLER</div>
+          <div class="taller-buttons-grid">
+            <a href="#queonda?tab=taller" class="btn-classic color-blue-bg font-small">TALLER</a>
+            <a href="#queonda?tab=taller&aparato=ventilador" class="btn-classic color-red-text font-small">ventilador</a>
+            <a href="#queonda?tab=taller&aparato=secarropas" class="btn-classic color-red-text font-small">secarropas</a>
+            <a href="#queonda?tab=taller&aparato=lavavajilla" class="btn-classic color-red-text font-small">lavavajilla</a>
+            <a href="#queonda?tab=taller&aparato=lavarropas" class="btn-classic color-red-text font-small">lavarropas</a>
+          </div>
+          <a href="#queonda?tab=taller" class="btn-classic color-red-text spacing-top font-small">ACEPTADO</a>
+          <a href="#queonda?tab=taller-terminado" class="btn-classic color-red-text font-small">TERMINADO</a>
+          <a href="#queonda?tab=taller-espera" class="btn-classic font-small">ESPERA</a>
+          <a href="#queonda?tab=cristian" class="btn-classic font-small">CRISTIAN</a>
+          <div class="taller-sub-row">
+            <a href="#queonda?tab=taller&tecnico=joel" class="btn-classic font-small">joel</a>
+            <a href="#queonda?tab=taller&tecnico=andres" class="btn-classic font-small">andres</a>
+          </div>
+        </div>
+        
+        <!-- Col 5 (Impresora) -->
+        <div class="panel-col col-5">
+          <div class="panel-section-title color-yellow-text">impresora</div>
+          <div class="btn-classic font-small color-blue-text">imprimir ficha</div>
+          <div class="btn-classic font-small color-red-text">RECIBOS</div>
+          <a href="#queonda?tab=comprar" class="btn-classic font-small color-red-text">COMPR. RETIRO</a>
+          <div class="taller-sub-row">
+            <div class="btn-classic color-yellow-bg font-small">joel</div>
+            <div class="btn-classic font-small">andres</div>
+          </div>
+          <a href="#queonda?tab=taller-espera" class="btn-classic color-blue-bg font-small font-bold">taller presup</a>
+          <a href="#queonda?tab=llevar" class="btn-classic color-yellow-bg font-small font-bold">planilla</a>
+        </div>
+        
+        <!-- Col 6 (CALLE) -->
+        <div class="panel-col col-6 border-yellow">
+          <div class="panel-section-title color-blue-bg">CALLE</div>
+          <a href="#queonda?tab=llevar" class="btn-classic color-red-text font-small font-bold">LLEVAR ACEPTADO</a>
+          <a href="#queonda?tab=llevar-devolucion" class="btn-classic color-red-text font-small font-bold">LLEVAR DEVOLUCION</a>
+          <a href="#queonda?tab=traer" class="btn-classic color-red-text font-small font-bold">TRAER</a>
+          <a href="#queonda?tab=traer-confirmar" class="btn-classic color-red-text font-small">a confirmar</a>
+        </div>
+        
+        <!-- Col 7 (Rightmost/Entregados) -->
+        <div class="panel-col col-7 border-red">
+          <a href="#queonda?tab=llevado-ayer" class="btn-classic color-red-border font-small font-bold">llevado ayer</a>
+          <a href="#queonda?tab=llevar-manana" class="btn-classic font-small font-bold">llevar mañana</a>
+          <a href="#queonda?tab=llevar-manana" class="btn-classic font-small font-bold">mañana +</a>
+          <a href="#queonda?tab=traer-manana" class="btn-classic font-small font-bold">traer mañana +</a>
+          <a href="#queonda?tab=ingresados-ayer" class="btn-classic font-small font-bold">ingreso ayer</a>
+        </div>
+        
+      </div>
+      
+      <!-- Row 2: FICHAJE -->
+      <div class="panel-fichaje-row">
+        <a href="#ministerio" class="btn-classic color-red-text font-bold text-center width-fichaje-title">FICHAJE</a>
+        <div class="fichaje-pairs-container">
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=8" class="btn-classic color-yellow-bg font-bold">victor</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=4" class="btn-classic color-yellow-bg font-bold">ANDRÉS</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=2" class="btn-classic color-yellow-bg font-bold">fer</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=3" class="btn-classic color-yellow-bg font-bold">Gaston</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=6" class="btn-classic color-yellow-bg font-bold">JULI</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=7" class="btn-classic color-yellow-bg font-bold">MAXI Mohe</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="btn-classic color-pink-bg font-small">franja min sem</div>
+          <div class="fichaje-pair"><a href="#ministerio?colaborador=vacante" class="btn-classic color-yellow-bg font-bold">vacante</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
+          <div class="fichaje-pair-triple">
+            <a href="#ministerio?colaborador=diego" class="btn-classic color-yellow-bg font-bold">Diego</a>
+            <div class="btn-classic btn-horas-total">HORAS TOTAL</div>
+            <div class="btn-classic color-yellow-bg font-small">franja</div>
+          </div>
+        </div>
+        
+        <!-- Logo EconoService -->
+        <div class="econoservice-logo-container">
+          <div class="econoservice-circular-logo">
+            <div class="logo-inner-circle">
+              <span class="logo-letter">E</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </template>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

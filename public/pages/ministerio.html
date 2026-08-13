@@ -1,0 +1,27 @@
+<div class="access-form">
+  <div class="form-header">Ministerio</div>
+  <div class="title-bar">
+    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
+    <button class="cmd-button" onclick="min_save()" style="padding: 2px 5px;">Guardar</button>
+  </div>
+  <div class="form-body">
+    <div class="form-group-box" data-legend="Registro de Horas">
+      <div class="form-row">
+        <label>Colaborador:</label>
+        <select id="min-colab" class="form-control"></select>
+      </div>
+      <div class="form-row"><label>Fecha:</label><input type="date" id="min-fecha" class="form-control"></div>
+      <div class="form-row"><label>Entrada:</label><input type="time" id="min-entrada" class="form-control"></div>
+      <div class="form-row"><label>Salida:</label><input type="time" id="min-salida" class="form-control"></div>
+      <div class="form-row"><label>Entrada Bis:</label><input type="time" id="min-entradabis" class="form-control"></div>
+      <div class="form-row"><label>Salida Bis:</label><input type="time" id="min-salidabis" class="form-control"></div>
+      <div class="form-row"><label>Ajuste:</label><input type="number" id="min-ajuste" class="form-control"></div>
+      <div class="form-row"><label>Adelanto:</label><input type="number" id="min-adelanto" class="form-control"></div>
+      <div class="form-row"><label>Info:</label><input type="text" id="min-info" class="form-control"></div>
+    </div>
+    <div class="form-group-box" data-legend="Registros">
+      <div id="min-grid" style="height: 200px; overflow: auto;"></div>
+    </div>
+  </div>
+  <div id="min-record-nav"></div>
+</div>

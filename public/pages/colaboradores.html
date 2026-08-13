@@ -1,0 +1,19 @@
+<div class="access-form">
+  <div class="form-header">Colaboradores</div>
+  <div class="title-bar">
+    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
+    <button class="cmd-button" onclick="col_save()" style="padding: 2px 5px;">Guardar</button>
+  </div>
+  <div class="form-body">
+    <div class="form-group-box" data-legend="Datos">
+      <div class="form-row"><label>Nombre:</label><input type="text" id="col-nombre" class="form-control"></div>
+      <div class="form-row"><label>DNI:</label><input type="text" id="col-dni" class="form-control"></div>
+      <div class="form-row"><label>Fecha Nac.:</label><input type="date" id="col-fnac" class="form-control"></div>
+      <div class="form-row"><label>Domicilio:</label><input type="text" id="col-dom" class="form-control"></div>
+    </div>
+    <div class="form-group-box" data-legend="Registros Ministerio">
+      <div id="col-min-grid" style="height: 150px; overflow: auto;"></div>
+    </div>
+  </div>
+  <div id="col-record-nav"></div>
+</div>

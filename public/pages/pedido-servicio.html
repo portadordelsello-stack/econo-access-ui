@@ -1,0 +1,172 @@
+<div class="access-form">
+  <div class="form-header">Pedido de Servicio</div>
+  <div class="title-bar">
+    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
+    <button class="cmd-button" onclick="ps_save()" style="padding: 2px 5px; margin-right: 5px;">Guardar</button>
+    <button class="cmd-button" onclick="ps_new()" style="padding: 2px 5px; margin-right: 5px;">Nuevo</button>
+    <button class="cmd-button" onclick="ps_delete()" style="padding: 2px 5px;">Eliminar</button>
+  </div>
+  
+  <div class="form-body">
+    <!-- Client Search -->
+    <div class="form-group-box" data-legend="Cliente">
+      <div class="form-row">
+        <label>Buscar Cliente:</label>
+        <input type="text" id="ps-client-search" class="form-control" placeholder="Nombre o calle...">
+        <button class="cmd-button" onclick="ps_searchClient()" style="margin-left: 5px; padding: 2px 5px;">Buscar</button>
+      </div>
+      <div class="form-row">
+        <label>Cliente Seleccionado:</label>
+        <input type="text" id="ps-client-display" class="form-control" readonly style="background: #EBEBEB;">
+        <input type="hidden" id="ps-client-id">
+      </div>
+    </div>
+
+    <div class="form-grid">
+      <!-- Left Column -->
+      <div>
+        <div class="form-group-box" data-legend="Datos del Servicio">
+          <div class="form-row">
+            <label>Fecha:</label>
+            <input type="date" id="ps-fecha" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Aparato:</label>
+            <select id="ps-aparato" class="form-control">
+              <option value="Lavarropas">Lavarropas</option>
+              <option value="Secarropas">Secarropas</option>
+              <option value="Lavavajillas">Lavavajillas</option>
+              <option value="Ventilador">Ventilador</option>
+              <option value="Microondas">Microondas</option>
+              <option value="Heladera">Heladera</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Marca/Modelo:</label>
+            <input type="text" id="ps-marca-modelo" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Desperfecto:</label>
+            <textarea id="ps-desperfecto" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Cita Día:</label>
+            <input type="date" id="ps-cita-dia" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Hora Desde/Hasta:</label>
+            <input type="time" id="ps-hora-desde" class="form-control" style="width: 45%;">
+            <span style="margin: 0 2%;"> - </span>
+            <input type="time" id="ps-hora-hasta" class="form-control" style="width: 45%;">
+          </div>
+          <div class="form-row">
+            <label>Acción:</label>
+            <select id="ps-traer-ver" class="form-control">
+              <option value="traer">Traer</option>
+              <option value="ver">Ver</option>
+              <option value="a confirmar">A Confirmar</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group-box" data-legend="Taller">
+          <div class="form-row checkbox-row">
+            <input type="checkbox" id="ps-ingreso-taller-chk">
+            <label for="ps-ingreso-taller-chk">Ingreso Taller</label>
+          </div>
+          <div class="form-row">
+            <label>Servicios Req.:</label>
+            <textarea id="ps-servicios-req" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Reseña Interna:</label>
+            <textarea id="ps-resena" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Serv. Convenidos:</label>
+            <textarea id="ps-servicios-conv" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Presupuesto:</label>
+            <input type="number" id="ps-presupuesto" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Presup. Palabras:</label>
+            <input type="text" id="ps-presupuesto-palabras" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div>
+        <div class="form-group-box" data-legend="Estado (Checkboxes)">
+          <div class="checkbox-grid">
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-acepta"><label>Acepta</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-rechaza"><label>Rechaza-Devolver</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-llamar"><label>Llamar</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-llevar"><label>llevar</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-terminado"><label>terminado</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-entregado"><label>Entregado</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-stock"><label>Pasa a Stock</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-arreglado-dom"><label>Arreglado domicilio</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-repuestos-comp"><label>Repuestos Comprados</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-cristian"><label>para cristian</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-fichaok"><label>fichaok</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-jo"><label>jo</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-factura"><label>factura</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-contado"><label>contado</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-ir"><label>ir</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-ic"><label>ic</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-reclamo"><label>Reclamo garantia</label></div>
+            <div class="checkbox-row"><input type="checkbox" id="ps-chk-es-reclamo"><label>Es Reclamo Garantia</label></div>
+          </div>
+        </div>
+
+        <div class="form-group-box" data-legend="Entrega y Garantía">
+          <div class="form-row">
+            <label>Garantía:</label>
+            <input type="text" id="ps-garantia" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Cita Entrega:</label>
+            <input type="date" id="ps-cita-entrega" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Hora Entr. Desde/Hasta:</label>
+            <input type="time" id="ps-hora-entrega-desde" class="form-control" style="width: 45%;">
+            <span style="margin: 0 2%;"> - </span>
+            <input type="time" id="ps-hora-entrega-hasta" class="form-control" style="width: 45%;">
+          </div>
+        </div>
+
+        <div class="form-group-box" data-legend="Repuestos">
+          <div class="form-row">
+            <label>Repuestos a Comprar:</label>
+            <textarea id="ps-repuestos-comprar" class="form-control" rows="2"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group-box" data-legend="Info Adicional">
+          <div class="form-row">
+            <label>Info Logística:</label>
+            <input type="text" id="ps-info-logistica" class="form-control">
+          </div>
+          <div class="form-row">
+            <label>Técnico:</label>
+            <input type="text" id="ps-tecnico" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Subform for client history -->
+    <div class="form-group-box" data-legend="Historial del Cliente" style="margin-top: 15px;">
+      <div id="ps-subform-container" style="height: 150px; overflow-y: auto;">
+        <!-- Datasheet injected here -->
+      </div>
+    </div>
+  </div>
+  
+  <div id="ps-record-nav-container"></div>
+</div>
