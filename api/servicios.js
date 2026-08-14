@@ -133,6 +133,11 @@ router.get('/llevar-aceptado-pas-pas-manana', (req, res) => {
     res.json(db.prepare(query).all(todayDate(), dayAfterTomorrowDate()));
 });
 
+router.get('/traer-manana-mas', (req, res) => {
+    const query = getBusinessQuery(`s.ingreso_taller = 0 AND s.arreglado_en_domicilio = 0 AND s.traer_ver IS NOT NULL AND parse_access_date(s.cita_dia) > ? AND parse_access_date(s.cita_dia) < ? AND s.pasa_a_stock = 0 AND s.rechaza_devolver = 0`);
+    res.json(db.prepare(query).all(todayDate(), dayAfterTomorrowDate()));
+});
+
 router.get('/llevado-ayer', (req, res) => {
     const query = getBusinessQuery(`s.entregado = 1 AND parse_access_date(s.cita_entrega) = ? AND s.llevar = 1`);
     res.json(db.prepare(query).all(yesterdayDate()));
