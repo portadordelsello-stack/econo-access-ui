@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total'];
   return !datasheets.includes(pageName);
 }
 
@@ -478,6 +478,7 @@ function getTabTitle(hash) {
   if (pageName === 'facturas-de-este-mes') return 'facturas de este mes';
   if (pageName === 'producto-presente-mes') return 'producto presente mes';
   if (pageName === 'lacuentadehoybistotal') return 'lacuentadehoybistotal';
+  if (pageName === 'recaudacion-de-manana-total') return 'recaudacion de mañana total';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;

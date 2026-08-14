@@ -170,6 +170,20 @@ router.get('/lacuentadehoybistotal', (req, res) => {
     res.json(row);
 });
 
+router.get('/recaudacion-de-manana-total', (req, res) => {
+    const targetDate = req.query.date || tomorrowDate();
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(s.presupuesto), 0) as SumaDePresupuesto
+        FROM servicio s
+        WHERE parse_access_date(s.cita_entrega) = ?
+          AND s.acepta = 1
+          AND s.entregado = 0
+          AND s.pasa_a_stock = 0
+          AND s.ingreso_taller = 1
+    `).get(targetDate);
+    res.json(row);
+});
+
 router.get('/calculadora-total', (req, res) => {
     const targetDate = req.query.date || todayDate();
     const row = db.prepare(`
