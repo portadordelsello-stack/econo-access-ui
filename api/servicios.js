@@ -171,6 +171,26 @@ router.get('/calculadora-total', (req, res) => {
     res.json(row);
 });
 
+router.get('/taller-fichar', (req, res) => {
+    const data = db.prepare(`
+        SELECT s.fichaok, s.id_servicio, s.fecha, s.aparato, s.marca_modelo, s.desperfecto_usuario,
+               s.servicios_requeridos, s.resena_interna_servicios, s.servicios_convenidos, s.acepta,
+               s.llamar, s.presupuesto, s.llevar, s.cita_entrega, s.repuestos_comprar, s.repuestos_comprados,
+               s.pasa_a_stock, s.cita_dia, s.ingreso_taller,
+               c.calle, c.numero_direccion, c.depto, c.piso
+        FROM servicio s
+        JOIN clientes c ON s.id_cliente = c.id_cliente
+        WHERE s.ingreso_taller = 1
+          AND s.acepta = 0
+          AND s.llamar = 0
+          AND s.pasa_a_stock = 0
+          AND s.entregado = 0
+          AND s.fichaok = 0
+        ORDER BY s.id_servicio ASC
+    `).all();
+    res.json(data);
+});
+
 router.get('/queonda/total', (req, res) => {
     const row = db.prepare(`SELECT COUNT(*) as total FROM servicio`).get();
     res.json(row);
