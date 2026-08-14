@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian', 'taller-joel', 'taller-andres', 'llevar-aceptado', 'llevar-devolucion', 'traer', 'traer-confirmar'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian', 'taller-joel', 'taller-andres', 'llevar-aceptado', 'llevar-devolucion', 'traer', 'traer-confirmar', 'llevado-ayer'];
   return !datasheets.includes(pageName);
 }
 
@@ -503,6 +503,7 @@ function getTabTitle(hash) {
   if (pageName === 'llevar-devolucion') return 'LLEVAR DEVOLUCION';
   if (pageName === 'traer') return 'TRAER';
   if (pageName === 'traer-confirmar') return 'TRAER a confirmar';
+  if (pageName === 'llevado-ayer') return 'LLEVADO AYER';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
