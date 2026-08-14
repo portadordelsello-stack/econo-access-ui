@@ -216,8 +216,20 @@ router.get('/control-facturas', (req, res) => {
         totalFacturasA,
         totalFacturado,
         gastosMonth,
-        serviciosMonth
     });
+});
+
+router.get('/facturas-de-este-mes', (req, res) => {
+    const targetMonth = req.query.month || '2021-12';
+    const data = db.prepare(`
+        SELECT s.id_servicio, s.presupuesto, s.acepta, s.cita_entrega, s.factura
+        FROM servicio s
+        JOIN clientes c ON s.id_cliente = c.id_cliente
+        WHERE strftime('%Y-%m', parse_access_date(s.cita_entrega)) = ?
+          AND s.factura = 1
+        ORDER BY parse_access_date(s.cita_entrega) ASC, s.id_servicio ASC
+    `).all(targetMonth);
+    res.json(data);
 });
 
 router.get('/queonda/total', (req, res) => {
