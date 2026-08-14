@@ -16,6 +16,11 @@ const yesterdayDate = () => {
     d.setDate(d.getDate() - 1);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 };
+const dayAfterTomorrowDate = () => {
+    const d = new Date();
+    d.setDate(d.getDate() + 2);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
 
 const getBusinessQuery = (condition, orderBy = 's.fecha DESC', joinExtras = '') => {
     return `
@@ -121,6 +126,11 @@ router.get('/planilla', (req, res) => {
 router.get('/llevar-manana', (req, res) => {
     const query = getBusinessQuery(`parse_access_date(s.cita_entrega) = ? AND s.llevar = 1 AND s.entregado = 0`);
     res.json(db.prepare(query).all(tomorrowDate()));
+});
+
+router.get('/llevar-aceptado-pas-pas-manana', (req, res) => {
+    const query = getBusinessQuery(`s.entregado = 0 AND parse_access_date(s.cita_entrega) > ? AND parse_access_date(s.cita_entrega) < ? AND s.llevar = 1`);
+    res.json(db.prepare(query).all(todayDate(), dayAfterTomorrowDate()));
 });
 
 router.get('/llevado-ayer', (req, res) => {
