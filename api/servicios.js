@@ -170,6 +170,16 @@ router.get('/lacuentadehoybistotal', (req, res) => {
     res.json(row);
 });
 
+router.get('/lacuentadeayertotal', (req, res) => {
+    const targetDate = req.query.date || yesterdayDate();
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(s.presupuesto), 0) as SumaDePresupuesto
+        FROM servicio s
+        WHERE parse_access_date(s.cita_entrega) = ?
+    `).get(targetDate);
+    res.json(row);
+});
+
 router.get('/recaudacion-de-manana-total', (req, res) => {
     const targetDate = req.query.date || tomorrowDate();
     const row = db.prepare(`
