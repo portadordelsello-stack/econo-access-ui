@@ -979,6 +979,35 @@ input[type="checkbox"]:checked::after {
   display: block;
 }
 
+/* Taller section sizing adjustments (+20%) */
+.col-4 {
+  min-width: 135px !important;
+  gap: 5px !important;
+}
+
+.col-4 .panel-section-title {
+  font-size: 13px !important;
+  padding: 3px 5px !important;
+  margin-bottom: 6px !important;
+}
+
+.col-4 .btn-classic {
+  padding: 4px 9px !important;
+}
+
+.col-4 .font-small {
+  font-size: 11px !important;
+}
+
+.col-4 .taller-buttons-grid {
+  gap: 3px !important;
+  padding: 3px !important;
+}
+
+.col-4 .taller-sub-row {
+  gap: 4px !important;
+}
+
 
 
 
