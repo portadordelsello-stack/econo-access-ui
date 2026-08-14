@@ -1,0 +1,35 @@
+<div class="ficha-report-wrapper">
+  <!-- Toolbar (hidden during print) -->
+  <div class="ficha-report-toolbar no-print">
+    <button class="access-find-btn" id="btn-print-andres" onclick="window.print()">
+      🖨️ Imprimir
+    </button>
+    <button class="access-find-btn" onclick="window.location.hash = ''">
+      ❌ Cerrar
+    </button>
+  </div>
+
+  <!-- Report Content Container -->
+  <div class="andres-report-container">
+    <div class="andres-report-header">
+      <h1 class="andres-report-title">Andres</h1>
+      <span class="andres-report-date" id="andres-report-date-span"></span>
+    </div>
+
+    <!-- Table Header Row -->
+    <div class="andres-table-header">
+      <div class="andres-cell cell-andres-calle">Calle</div>
+      <div class="andres-cell cell-andres-num">Num</div>
+      <div class="andres-cell cell-andres-entrega">entrega</div>
+      <div class="andres-cell cell-andres-apar">Apar</div>
+      <div class="andres-cell cell-andres-marca">Marca</div>
+      <div class="andres-cell cell-andres-servicios">Servicios Convenidos</div>
+      <div class="andres-cell cell-andres-informe">informe</div>
+    </div>
+
+    <!-- Table Body (Rows will be injected here) -->
+    <div id="andres-report-rows">
+      <div style="padding: 20px; text-align: center; color: #666;">Cargando reporte de Andrés...</div>
+    </div>
+  </div>
+</div>
