@@ -1,0 +1,35 @@
+<div class="ficha-report-wrapper">
+  <!-- Toolbar (hidden during print) -->
+  <div class="ficha-report-toolbar no-print">
+    <button class="access-find-btn" id="btn-print-presup" onclick="window.print()">
+      🖨️ Imprimir
+    </button>
+    <button class="access-find-btn" onclick="window.location.hash = ''">
+      ❌ Cerrar
+    </button>
+  </div>
+
+  <!-- Report Content Container -->
+  <div class="presupuestar-report-container">
+    <div class="presupuestar-report-header">
+      <h1 class="presupuestar-report-title">TALLER PRESUPUESTAR</h1>
+      <span class="presupuestar-report-date" id="presupuestar-report-date-span"></span>
+    </div>
+
+    <!-- Table Header Row -->
+    <div class="presupuestar-table-header">
+      <div class="presupuestar-cell cell-presup-fecha"></div>
+      <div class="presupuestar-cell cell-presup-calle">Calle</div>
+      <div class="presupuestar-cell cell-presup-numero">Numero</div>
+      <div class="presupuestar-cell cell-presup-marca">Marca Modelo</div>
+      <div class="presupuestar-cell cell-presup-usuario">D. Usuario</div>
+      <div class="presupuestar-cell cell-presup-requerido">S. Requerido</div>
+      <div class="presupuestar-cell cell-presup-interna">R Interna</div>
+    </div>
+
+    <!-- Table Body (Rows will be injected here) -->
+    <div id="presupuestar-report-rows">
+      <div style="padding: 20px; text-align: center; color: #666;">Cargando reporte de taller presupuestar...</div>
+    </div>
+  </div>
+</div>
