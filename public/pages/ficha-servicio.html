@@ -1,0 +1,19 @@
+<div class="ficha-report-wrapper">
+  <!-- Toolbar (hidden during print) -->
+  <div class="ficha-report-toolbar no-print">
+    <button class="access-find-btn" id="btn-print-fichas" onclick="window.print()">
+      🖨️ Imprimir Todas
+    </button>
+    <button class="access-find-btn" id="btn-mark-printed" onclick="markAllFichasAsPrinted()">
+      ✓ Marcar como Impresas
+    </button>
+    <button class="access-find-btn" onclick="window.location.hash = ''">
+      ❌ Cerrar
+    </button>
+  </div>
+
+  <!-- Cards Container -->
+  <div id="ficha-cards-container" class="ficha-cards-container">
+    <div style="padding: 20px; text-align: center; color: #666;">Cargando fichas de servicio...</div>
+  </div>
+</div>

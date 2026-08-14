@@ -493,6 +493,7 @@ function getTabTitle(hash) {
   if (pageName === 'taller-cristian') return 'taller cristian';
   if (pageName === 'taller-joel') return 'taller joel';
   if (pageName === 'taller-andres') return 'taller andres';
+  if (pageName === 'ficha-servicio') return 'ficha servicio';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
