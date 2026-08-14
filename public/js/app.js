@@ -498,6 +498,7 @@ function getTabTitle(hash) {
   if (pageName === 'clientes1') return 'Clientes1';
   if (pageName === 'reporte-andres') return 'joel';
   if (pageName === 'taller-presupuestar') return 'TALLER PRESUPUESTAR';
+  if (pageName === 'planilla') return 'planilla entrega conformidad';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;

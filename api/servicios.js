@@ -113,6 +113,11 @@ router.get('/llevar-devolucion', (req, res) => {
     res.json(db.prepare(query).all(todayDate()));
 });
 
+router.get('/planilla', (req, res) => {
+    const query = getBusinessQuery(`s.entregado = 0 AND parse_access_date(s.cita_entrega) <= ? AND s.terminado = 1 AND s.llevar = 1`);
+    res.json(db.prepare(query).all(todayDate()));
+});
+
 router.get('/llevar-manana', (req, res) => {
     const query = getBusinessQuery(`parse_access_date(s.cita_entrega) = ? AND s.llevar = 1 AND s.entregado = 0`);
     res.json(db.prepare(query).all(tomorrowDate()));

@@ -1,0 +1,23 @@
+<div class="ficha-report-wrapper">
+  <!-- Toolbar (hidden during print) -->
+  <div class="ficha-report-toolbar no-print">
+    <button class="access-find-btn" id="btn-print-planilla" onclick="window.print()">
+      🖨️ Imprimir
+    </button>
+    <button class="access-find-btn" onclick="window.location.hash = ''">
+      ❌ Cerrar
+    </button>
+  </div>
+
+  <!-- Report Content Container -->
+  <div class="planilla-report-container">
+    <div class="planilla-report-header">
+      <h1 class="planilla-report-title">Recepcion Conforme</h1>
+    </div>
+
+    <!-- Container where slips are injected -->
+    <div id="planilla-slips-container">
+      <div style="padding: 20px; text-align: center; color: #666;">Cargando planilla de entrega...</div>
+    </div>
+  </div>
+</div>
