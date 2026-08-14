@@ -495,6 +495,7 @@ function getTabTitle(hash) {
   if (pageName === 'taller-andres') return 'taller andres';
   if (pageName === 'ficha-servicio') return 'ficha servicio';
   if (pageName === 'reporte-recibos') return 'Clientes';
+  if (pageName === 'clientes1') return 'Clientes1';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
