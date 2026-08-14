@@ -555,35 +555,11 @@ input[type="checkbox"]:checked::after {
   padding: 0 10px;
 }
 
-.econoservice-circular-logo {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #FFF;
-  border-radius: 50%;
-  background: radial-gradient(circle, #2E6EB5 0%, #153965 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-}
-
-.logo-inner-circle {
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(255,255,255,0.8);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-letter {
-  color: #FFF;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 26px;
-  font-weight: bold;
-  line-height: 1;
-  margin-top: -2px;
+.econoservice-logo-img {
+  height: 60px;
+  width: auto;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(255,255,255,0.2);
 }
 
 /* MS Access Datasheet Styles */
