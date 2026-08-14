@@ -53,6 +53,11 @@ router.get('/taller/ventiladores', (req, res) => {
     res.json(db.prepare(query).all());
 });
 
+router.get('/taller-aceptado', (req, res) => {
+    const query = getBusinessQuery(`s.acepta = 1 AND s.entregado = 0 AND s.terminado = 0 AND (s.tecnico IS NULL OR s.tecnico = '') AND s.para_cristian = 0 AND s.pasa_a_stock = 0 AND s.ingreso_taller = 1`);
+    res.json(db.prepare(query).all());
+});
+
 router.get('/taller-espera', (req, res) => {
     const query = getBusinessQuery(`s.llamar = 1 AND s.acepta = 0 AND s.ingreso_taller = 1 AND s.pasa_a_stock = 0 AND s.rechaza_devolver = 0 AND s.entregado = 0`);
     res.json(db.prepare(query).all());
