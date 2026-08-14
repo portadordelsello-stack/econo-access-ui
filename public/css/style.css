@@ -1372,6 +1372,111 @@ input[type="checkbox"]:checked::after {
   height: 0;
 }
 
+/* Joel Report Styling */
+.joel-report-container {
+  background-color: #FFF;
+  padding: 30px;
+  max-width: 950px;
+  margin: 0 auto;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.joel-report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
+}
+
+.joel-report-title {
+  font-size: 26pt;
+  font-weight: bold;
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  margin: 0;
+  color: #000;
+}
+
+.joel-report-date {
+  font-size: 13pt;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: #000;
+}
+
+.joel-table-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #44546A; /* Classic slate gray for Access report headers */
+  font-size: 9.5pt;
+  padding-left: 2px;
+}
+
+.joel-table-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.joel-cell {
+  box-sizing: border-box;
+  font-size: 8.5pt;
+  line-height: 1.4;
+}
+
+.joel-table-header .joel-cell {
+  border: none;
+  padding: 4px;
+}
+
+.joel-table-row .joel-cell {
+  border: 1px solid #808000; /* Olive border from joel.png */
+  padding: 8px;
+  background-color: #FFF;
+}
+
+.cell-calle {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.cell-numero {
+  width: 55px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.cell-cita {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.cell-aparato {
+  width: 65px;
+  flex-shrink: 0;
+}
+
+.cell-marca {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.cell-servicios {
+  flex: 1;
+}
+
+@media print {
+  .joel-report-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+}
+
 
 
 

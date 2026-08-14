@@ -1,0 +1,34 @@
+<div class="ficha-report-wrapper">
+  <!-- Toolbar (hidden during print) -->
+  <div class="ficha-report-toolbar no-print">
+    <button class="access-find-btn" id="btn-print-joel" onclick="window.print()">
+      🖨️ Imprimir
+    </button>
+    <button class="access-find-btn" onclick="window.location.hash = ''">
+      ❌ Cerrar
+    </button>
+  </div>
+
+  <!-- Report Content Container -->
+  <div class="joel-report-container">
+    <div class="joel-report-header">
+      <h1 class="joel-report-title">joel</h1>
+      <span class="joel-report-date" id="joel-report-date-span"></span>
+    </div>
+
+    <!-- Table Header Row -->
+    <div class="joel-table-header">
+      <div class="joel-cell cell-calle">Calle</div>
+      <div class="joel-cell cell-numero">Nume<br>ro</div>
+      <div class="joel-cell cell-cita">Cita entrega:</div>
+      <div class="joel-cell cell-aparato">Apara<br>to</div>
+      <div class="joel-cell cell-marca">Marca Modelo</div>
+      <div class="joel-cell cell-servicios">Servicios Convenidos</div>
+    </div>
+
+    <!-- Table Body (Rows will be injected here) -->
+    <div id="joel-report-rows">
+      <div style="padding: 20px; text-align: center; color: #666;">Cargando reporte de Joel...</div>
+    </div>
+  </div>
+</div>
