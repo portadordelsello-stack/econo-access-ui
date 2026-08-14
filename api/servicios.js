@@ -191,6 +191,35 @@ router.get('/taller-fichar', (req, res) => {
     res.json(data);
 });
 
+router.get('/control-facturas', (req, res) => {
+    const defaultGastosMonth = '2026-08';
+    const defaultServiciosMonth = '2021-12';
+    
+    const gastosMonth = req.query.gastos_month || defaultGastosMonth;
+    const serviciosMonth = req.query.servicios_month || defaultServiciosMonth;
+    
+    const totalFacturasA = db.prepare(`
+        SELECT COALESCE(SUM(COALESCE(parcial, 0) + COALESCE(sumar, 0) - COALESCE(restar, 0)), 0) as total
+        FROM gastos_repuestos
+        WHERE strftime('%Y-%m', parse_access_date(fecha)) = ?
+          AND fa = 1
+    `).get(gastosMonth).total;
+    
+    const totalFacturado = db.prepare(`
+        SELECT COALESCE(SUM(presupuesto), 0) as total
+        FROM servicio
+        WHERE strftime('%Y-%m', parse_access_date(cita_entrega)) = ?
+          AND factura = 1
+    `).get(serviciosMonth).total;
+    
+    res.json({
+        totalFacturasA,
+        totalFacturado,
+        gastosMonth,
+        serviciosMonth
+    });
+});
+
 router.get('/queonda/total', (req, res) => {
     const row = db.prepare(`SELECT COUNT(*) as total FROM servicio`).get();
     res.json(row);
