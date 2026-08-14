@@ -134,27 +134,72 @@
       </div>
       
       <!-- Row 2: FICHAJE -->
-      <div class="panel-fichaje-row">
-        <a href="#colaboradores" class="btn-classic color-red-text font-bold text-center width-fichaje-title">FICHAJE</a>
-        <div class="fichaje-pairs-container">
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=8" class="btn-classic color-yellow-bg font-bold">victor</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=4" class="btn-classic color-yellow-bg font-bold">ANDRÉS</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=2" class="btn-classic color-yellow-bg font-bold">fer</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=3" class="btn-classic color-yellow-bg font-bold">Gaston</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=6" class="btn-classic color-yellow-bg font-bold">JULI</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=7" class="btn-classic color-yellow-bg font-bold">MAXI Mohe</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="btn-classic color-pink-bg font-small">franja min sem</div>
-          <div class="fichaje-pair"><a href="#ministerio?colaborador=vacante" class="btn-classic color-yellow-bg font-bold">vacante</a><div class="btn-classic btn-horas-total">HORAS TOTAL</div></div>
-          <div class="fichaje-pair-triple">
-            <a href="#ministerio?colaborador=diego" class="btn-classic color-yellow-bg font-bold">Diego</a>
-            <div class="btn-classic btn-horas-total">HORAS TOTAL</div>
-            <div class="btn-classic color-yellow-bg font-small">franja</div>
+      <div class="panel-fichaje-container">
+        
+        <!-- Left Bordered Box -->
+        <div class="fichaje-bordered-box">
+          
+          <!-- FICHAJE Button -->
+          <a href="#colaboradores" class="access-btn-grey red-text">FICHAJE</a>
+          
+          <!-- victor -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">victor</div>
+            <a href="#ministerio?colaborador=8" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
           </div>
+          
+          <!-- ANDRÉS -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">ANDRÉS</div>
+            <a href="#ministerio?colaborador=4" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+          
+          <!-- fer -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">fer</div>
+            <a href="#ministerio?colaborador=2" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+          
+          <!-- Gaston -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">Gaston</div>
+            <a href="#ministerio?colaborador=3" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+          
+          <!-- JULI -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">JULI</div>
+            <a href="#ministerio?colaborador=6" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+          
+          <!-- MAXI Mohe -->
+          <div class="fichaje-colab-pair">
+            <div class="access-label-yellow">MAXI Mohe</div>
+            <a href="#ministerio?colaborador=7" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+          
+          <!-- franja min sem -->
+          <a href="#" class="access-btn-grey red-text font-small">franja min<br>sem</a>
+          
+          <!-- vacante (aligned under MAXI Mohe in column 7) -->
+          <div class="fichaje-colab-pair vacante-container">
+            <div class="access-label-yellow">vacante</div>
+            <a href="#ministerio?colaborador=vacante" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+          </div>
+
         </div>
         
-        <!-- Logo EconoService -->
-        <div class="econoservice-logo-container">
+        <!-- Right Side (Logo and Diego) -->
+        <div class="fichaje-right-side">
           <img src="logo.jpg" alt="Logo" class="econoservice-logo-img">
+          
+          <div class="diego-container">
+            <div class="fichaje-colab-pair">
+              <div class="access-label-yellow">Diego</div>
+              <a href="#ministerio?colaborador=diego" class="access-btn-grey colab-horas-btn">HORAS<br>TOTAL</a>
+            </div>
+            <a href="#" class="access-btn-grey red-text franja-diego-btn">franja</a>
+          </div>
         </div>
         
       </div>

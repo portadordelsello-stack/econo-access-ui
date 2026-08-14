@@ -511,61 +511,123 @@ input[type="checkbox"]:checked::after {
   background-color: #103F75;
 }
 
-.panel-fichaje-row {
-  border: 2px solid #1C5CA3;
-  padding: 8px;
-  margin-top: 15px;
+.panel-fichaje-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
   box-sizing: border-box;
   background-color: #000;
+  margin-top: 15px;
+  padding: 10px 0;
 }
 
-.width-fichaje-title {
-  min-width: 80px;
-  font-size: 12px;
-}
-
-.fichaje-pairs-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.fichaje-bordered-box {
+  display: grid;
+  grid-template-columns: auto repeat(6, auto) auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 8px;
+  border: 1px solid #3b6194;
+  padding: 12px;
+  background-color: #000;
   flex-grow: 1;
 }
 
-.fichaje-pair {
+.fichaje-colab-pair {
   display: flex;
-  border: 1px solid #555;
+  align-items: stretch;
 }
 
-.fichaje-pair-triple {
-  display: flex;
-  border: 1px solid #555;
-}
-
-.btn-horas-total {
-  background-color: #FFF !important;
-  color: #000 !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-left: 1px solid #707070 !important;
-}
-
-.econoservice-logo-container {
+.access-label-yellow {
+  background-color: #FFFF00;
+  color: #000;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10px;
+  text-align: center;
+  border-top: 1.5px solid #FFFF00;
+  border-left: 1.5px solid #FFFF00;
+  border-right: 1.5px solid #FFFF00;
+  border-bottom: 1.5px solid #FFFF00;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.access-btn-grey {
+  background-color: #D4D0C8;
+  color: #000;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1.5px solid #FFF;
+  border-left: 1.5px solid #FFF;
+  border-right: 1.5px solid #808080;
+  border-bottom: 1.5px solid #808080;
+  padding: 3px 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.access-btn-grey:active {
+  border-top: 1.5px solid #808080;
+  border-left: 1.5px solid #808080;
+  border-right: 1.5px solid #FFF;
+  border-bottom: 1.5px solid #FFF;
+  padding: 4px 7px 2px 9px;
+}
+
+.red-text {
+  color: red !important;
+}
+
+.colab-horas-btn {
+  font-size: 9px;
+  line-height: 1.0;
+  padding: 2px 5px;
+  min-width: 50px;
+}
+
+.vacante-container {
+  grid-column: 7;
+}
+
+.fichaje-right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 120px;
 }
 
 .econoservice-logo-img {
-  height: 60px;
-  width: auto;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(255,255,255,0.2);
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  background-color: #FFF;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.diego-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.franja-diego-btn {
+  width: 100%;
 }
 
 /* MS Access Datasheet Styles */
