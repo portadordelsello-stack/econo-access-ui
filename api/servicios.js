@@ -160,6 +160,17 @@ router.get('/cuenta-hoy', (req, res) => {
     res.json(data);
 });
 
+router.get('/calculadora-total', (req, res) => {
+    const targetDate = req.query.date || todayDate();
+    const row = db.prepare(`
+        SELECT COALESCE(SUM(s.presupuesto), 0) as SumaDePresupuesto
+        FROM servicio s
+        WHERE parse_access_date(s.cita_entrega) = ?
+          AND s.contado = 1
+    `).get(targetDate);
+    res.json(row);
+});
+
 router.get('/queonda/total', (req, res) => {
     const row = db.prepare(`SELECT COUNT(*) as total FROM servicio`).get();
     res.json(row);
