@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores'];
   return !datasheets.includes(pageName);
 }
 
@@ -483,6 +483,7 @@ function getTabTitle(hash) {
   if (pageName === 'lacuentadeayertotal') return 'lacuentadeayertotal';
   if (pageName === 'placas-blue-amarilla-consulta') return 'placas blue amarilla consulta';
   if (pageName === 'taller') return 'taller';
+  if (pageName === 'taller-ventiladores') return 'taller ventiladores';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
