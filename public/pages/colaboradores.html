@@ -1,19 +1,58 @@
-<div class="access-form">
-  <div class="form-header">Colaboradores</div>
-  <div class="title-bar">
-    <a href="#" style="text-decoration: none; color: black; font-weight: normal; margin-right: 15px;">&lt; Volver al Panel</a>
-    <button class="cmd-button" onclick="col_save()" style="padding: 2px 5px;">Guardar</button>
-  </div>
-  <div class="form-body">
-    <div class="form-group-box" data-legend="Datos">
-      <div class="form-row"><label>Nombre:</label><input type="text" id="col-nombre" class="form-control"></div>
-      <div class="form-row"><label>DNI:</label><input type="text" id="col-dni" class="form-control"></div>
-      <div class="form-row"><label>Fecha Nac.:</label><input type="date" id="col-fnac" class="form-control"></div>
-      <div class="form-row"><label>Domicilio:</label><input type="text" id="col-dom" class="form-control"></div>
+<div class="access-form colab-form-view" style="background-color: #7A5E85; color: #000; height: 100%; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif;">
+  
+  <!-- Form Header Row -->
+  <div style="display: flex; gap: 30px; align-items: center; margin-bottom: 15px;">
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 13pt; font-weight: bold;">Nombre</span>
+      <input type="text" id="col-nombre" style="width: 250px; height: 26px; border: 1px solid #7F9DB9; padding: 2px 5px; font-size: 12pt; font-weight: bold; background-color: #FFF; color: #000; box-sizing: border-box;">
     </div>
-    <div class="form-group-box" data-legend="Registros Ministerio">
-      <div id="col-min-grid" style="height: 150px; overflow: auto;"></div>
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 11pt;">dni:</span>
+      <input type="text" id="col-dni" style="width: 120px; height: 22px; border: 1px solid #7F9DB9; padding: 2px 5px; font-size: 10pt; background-color: #FFF; color: #000; box-sizing: border-box;">
     </div>
+    
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span style="font-size: 11pt;">fecha nacimiento:</span>
+      <input type="text" id="col-fnac" style="width: 120px; height: 22px; border: 1px solid #7F9DB9; padding: 2px 5px; font-size: 10pt; background-color: #FFF; color: #000; box-sizing: border-box;">
+    </div>
+    
   </div>
-  <div id="col-record-nav"></div>
+
+  <!-- Second Row -->
+  <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 25px; padding-left: 55px;">
+    <span style="font-size: 10pt;">Id colaborador:</span>
+    <input type="text" id="col-id" readonly style="width: 80px; height: 20px; border: 1px solid #7F9DB9; text-align: right; padding-right: 5px; font-size: 9.5pt; background-color: #EAEAEA; color: #000; box-sizing: border-box;">
+  </div>
+
+  <!-- Ministry Grid (Subform) -->
+  <div style="flex-grow: 1; min-height: 250px; background-color: #FFF; border: 1px solid #7F9DB9; display: flex; flex-direction: column; box-sizing: border-box;">
+    <div id="col-min-grid" style="flex-grow: 1; height: 100%;"></div>
+  </div>
+
+  <!-- Parent Form Navigation & Controls -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px; background-color: #F0F0F0; border: 1px solid #A0A0A0; padding: 5px 15px; box-sizing: border-box;">
+    
+    <!-- Record switching buttons in the center-left -->
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button class="access-find-btn" onclick="prevColab()" style="padding: 4px 15px; font-size: 11pt; font-weight: bold; cursor: pointer;">
+        ◀
+      </button>
+      <button class="access-find-btn" onclick="nextColab()" style="padding: 4px 15px; font-size: 11pt; font-weight: bold; cursor: pointer;">
+        ▶
+      </button>
+      <span id="col-record-text" style="font-size: 10pt; color: #000; margin-left: 10px;">Registro: 1 de 8</span>
+    </div>
+
+    <!-- Right side controls (Save, Delete, Close) -->
+    <div style="display: flex; gap: 10px;">
+      <button class="access-find-btn" onclick="col_save()">Guardar</button>
+      <button class="access-find-btn" onclick="col_new()">Nuevo</button>
+      <button class="access-find-btn" onclick="col_delete()" style="color: red;">Eliminar</button>
+      <button class="access-find-btn" onclick="window.location.hash = ''">Cerrar</button>
+    </div>
+    
+  </div>
+
 </div>
