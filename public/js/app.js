@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian', 'taller-joel'];
   return !datasheets.includes(pageName);
 }
 
@@ -491,6 +491,7 @@ function getTabTitle(hash) {
   if (pageName === 'taller-terminado') return 'TALLER TERMINADO';
   if (pageName === 'taller-espera') return 'taller espera';
   if (pageName === 'taller-cristian') return 'taller cristian';
+  if (pageName === 'taller-joel') return 'taller joel';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;

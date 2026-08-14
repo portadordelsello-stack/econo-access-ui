@@ -68,6 +68,11 @@ router.get('/taller-cristian', (req, res) => {
     res.json(db.prepare(query).all());
 });
 
+router.get('/taller-joel', (req, res) => {
+    const query = getBusinessQuery(`s.tecnico = 'Joel' AND s.ingreso_taller = 1 AND s.entregado = 0 AND s.pasa_a_stock = 0 AND s.terminado = 0`);
+    res.json(db.prepare(query).all());
+});
+
 router.get('/taller-terminado', (req, res) => {
     const query = getBusinessQuery(`s.acepta = 1 AND s.terminado = 1 AND s.entregado = 0 AND s.pasa_a_stock = 0 AND s.ingreso_taller = 1`);
     res.json(db.prepare(query).all());
