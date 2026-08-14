@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis'];
   return !datasheets.includes(pageName);
 }
 
@@ -471,6 +471,7 @@ function getTabTitle(hash) {
   if (pageName === 'roti') return 'gasto mes rotiseria total';
   if (pageName === 'insum') return 'gasto mes insumos eco total';
   if (pageName === 'franja-prod') return 'Total$octubre2020';
+  if (pageName === 'lacuentadehoybis') return 'lacuentadehoybis';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;

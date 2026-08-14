@@ -147,6 +147,19 @@ router.get('/franja-prod', (req, res) => {
     res.json(data);
 });
 
+router.get('/cuenta-hoy', (req, res) => {
+    const targetDate = req.query.date || todayDate();
+    const data = db.prepare(`
+        SELECT s.id_servicio, s.cita_entrega, s.presupuesto, s.entregado, s.marca_modelo, s.info_logistica, s.arreglado_en_domicilio, s.factura, s.contado,
+               c.calle, c.numero_direccion, c.piso, c.depto
+        FROM servicio s
+        JOIN clientes c ON s.id_cliente = c.id_cliente
+        WHERE parse_access_date(s.cita_entrega) = ?
+        ORDER BY s.id_servicio ASC
+    `).all(targetDate);
+    res.json(data);
+});
+
 router.get('/queonda/total', (req, res) => {
     const row = db.prepare(`SELECT COUNT(*) as total FROM servicio`).get();
     res.json(row);
