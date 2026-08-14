@@ -32,12 +32,18 @@ body {
 /* Window Chrome */
 .title-bar {
   background: linear-gradient(to bottom, #FFFFFF, #E4E4E4);
-  padding: 4px 8px;
+  padding: 6px 10px;
   border-bottom: 1px solid #D4D4D4;
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 9pt;
+  font-size: 11pt;
+}
+
+.title-bar-logo {
+  height: 20px;
+  width: auto;
+  border-radius: 2px;
 }
 
 /* App Container */
