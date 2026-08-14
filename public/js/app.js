@@ -417,7 +417,7 @@ function getPageNameFromHash(hash) {
 }
 
 function isFormPage(pageName) {
-  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian', 'taller-joel', 'taller-andres', 'llevar-aceptado', 'llevar-devolucion', 'traer', 'traer-confirmar', 'llevado-ayer', 'llevar-manana', 'llevar-manana-mas', 'traer-manana-mas'];
+  const datasheets = ['historial', 'pedidos', 'productos-meses', 'misiones', 'gastos-mes', 'servicios-mes-hechos', 'stock', 'comprar-hoy', 'vianda', 'repue', 'alim', 'salar', 'infra', 'roti', 'insum', 'franja-prod', 'lacuentadehoybis', 'calculadora-total', 'taller-fichar', 'control-facturas', 'facturas-de-este-mes', 'producto-presente-mes', 'lacuentadehoybistotal', 'recaudacion-de-manana-total', 'recaudacion-futura-total', 'lacuentadeayertotal', 'placas-blue-amarilla-consulta', 'taller', 'taller-ventiladores', 'taller-secarropas', 'taller-lavavajillas', 'taller-lavarropas', 'taller-aceptado', 'taller-terminado', 'taller-espera', 'taller-cristian', 'taller-joel', 'taller-andres', 'llevar-aceptado', 'llevar-devolucion', 'traer', 'traer-confirmar', 'llevado-ayer', 'llevar-manana', 'llevar-manana-mas', 'traer-manana-mas', 'ingresados-ayer'];
   return !datasheets.includes(pageName);
 }
 
@@ -507,6 +507,7 @@ function getTabTitle(hash) {
   if (pageName === 'llevar-manana') return 'LLEVAR ACEPTADO MAÑANA';
   if (pageName === 'llevar-manana-mas') return 'LLEVAR ACEPTADO pas pas MAÑANA';
   if (pageName === 'traer-manana-mas') return 'traer mañana mas';
+  if (pageName === 'ingresados-ayer') return 'ingresados ayer';
   if (pageName === 'queonda') return 'queonda';
   if (pageName === 'formulario6') return 'Formulario6';
   return pageName;
