@@ -208,6 +208,32 @@ router.get('/recaudacion-futura-total', (req, res) => {
     res.json(row);
 });
 
+router.get('/placas-blue-amarilla-consulta', (req, res) => {
+    const data = db.prepare(`
+        SELECT id, codigo, codigo_abreviado, hardware, software, marca, modelo
+        FROM placas_blue_amarilla
+        ORDER BY id ASC
+    `).all();
+    res.json(data);
+});
+
+router.put('/placas-blue-amarilla-consulta/:id', (req, res) => {
+    const { id } = req.params;
+    const fields = ['codigo', 'codigo_abreviado', 'hardware', 'software', 'marca', 'modelo'];
+    const updates = [];
+    const values = [];
+    for (const f of fields) {
+        if (req.body[f] !== undefined) {
+            updates.push(`${updates.length === 0 ? '' : ' '}${f === 'codigo_abreviado' ? 'codigo_abreviado' : f} = ?`);
+            values.push(req.body[f]);
+        }
+    }
+    if (updates.length === 0) return res.status(400).json({ error: 'No fields to update' });
+    values.push(id);
+    db.prepare(`UPDATE placas_blue_amarilla SET ${updates.join(', ')} WHERE id = ?`).run(values);
+    res.json({ success: true });
+});
+
 router.get('/calculadora-total', (req, res) => {
     const targetDate = req.query.date || todayDate();
     const row = db.prepare(`
